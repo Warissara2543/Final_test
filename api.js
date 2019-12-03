@@ -18,7 +18,7 @@ function getAllProducts(req, res) {
 
 function getProductById(req, res) {    
     // #6 Get a product by ID
-    var id = req.params.id;
+    var pid = req.params.pid;
     Product.find({"_id":id}, function (err, product) {
         if (err) res.status(500).json(err);
         res.json(product);
@@ -30,7 +30,10 @@ function updateProductById(req, res) {
     var payload = req.body
     var pid = req.params.pid;    
     // #7 Update a product by ID (findByIdAndUpdate)
-
+    Product.findByIdAndUpdate(pid, payload, function(err){
+        if (err) res.status(500).json(err);
+        res.json({status: "Update a product"});
+    })
     // ===============================
 }
 
