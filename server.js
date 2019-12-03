@@ -19,9 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // #3 Serve static content in folder frontend
-app.get('/', function (req, res) {
-    res.send('Express is running');
-});
+app.use(express.static('frontend'));
 // ===============================
 
 var port = process.env.PORT || 8080; 

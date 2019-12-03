@@ -48,7 +48,6 @@ $(function () {
 
     $("#confirmdelete").click(function () {
         // #15 Get a selected product and go back to product list
-        // use $.get and winidow.location.href
         $("#saveproduct").click(function () {
             var deleteproduct = {
                 serialno: $("#serialno").val(),
