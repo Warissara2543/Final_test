@@ -62,7 +62,7 @@ $(function () {
                 type: 'DELETE',
                 data: deleteproduct,
                 success: function (result) {
-                    //Show updated status
+                    //Show delete status
                     $("#modalbody").text("Delete product " + pid);
                     $('#alertModal').modal('toggle');
                     // Refresh data
