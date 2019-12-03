@@ -18,7 +18,7 @@ function getAllProducts(req, res) {
 
 function getProductById(req, res) {    
     // #6 Get a product by ID
-    var pid = req.params.pid;
+    var id = req.params.id;
     Product.find({"_id":id}, function (err, product) {
         if (err) res.status(500).json(err);
         res.json(product);
@@ -28,7 +28,7 @@ function getProductById(req, res) {
 
 function updateProductById(req, res) {
     var payload = req.body
-    var pid = req.params.pid;    
+    var id = req.params.id;    
     // #7 Update a product by ID (findByIdAndUpdate)
     Product.findByIdAndUpdate(pid, payload, function(err){
         if (err) res.status(500).json(err);
@@ -38,9 +38,9 @@ function updateProductById(req, res) {
 }
 
 function deleteProductById(req, res) {
-    var pid = req.params.pid;    
+    var id = req.params.id;    
     // #8 Delete a product by ID (findByIdAndDelete)
-    Product.findByIdAndRemove(pid, function(err){
+    Product.findByIdAndDelete(id, function(err){
         if (err) res.status(500).json(err);
         res.json({status: "Delete a product"});
     })
