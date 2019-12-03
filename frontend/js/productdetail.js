@@ -28,13 +28,6 @@ $(function () {
 
     // Save edited product data
     $("#saveproduct").click(function () {
-        var editproduct = {
-            serialno: $("#serialno").val(),
-            name: $("#name").val(),
-            category: $("#category").val(),
-            price: $("#price").val(),
-            photo: $("#photo").val()
-        }
         $.ajax({
             url: url,
             type: 'PUT',
