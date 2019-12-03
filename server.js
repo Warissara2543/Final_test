@@ -19,10 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // #3 Serve static content in folder frontend
-mongoose.connect('mongodb://localhost:27017/coc', { useUnifiedTopology: true, useNewUrlParser: true }); // connect to our database
-var Product = require('./models/product');
+app.get('/', function (req, res) {
+    res.send('Express is running');
+});
 // ===============================
-
 
 var port = process.env.PORT || 8080; 
 
@@ -37,9 +37,6 @@ router.get('/products/:pid', products.getProductById);
 // #4 Complete the routing for POST, PUT, DELETE
 //Product APIs
 // index page
-app.get('/', function (req, res) {
-    res.send('Express is running');
-});
 
 app.get('/api', function (req, res) {
     var version = { version: "1.0b" };
