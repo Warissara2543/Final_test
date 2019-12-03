@@ -33,59 +33,13 @@ var router = express.Router();              // get an instance of the express Ro
 var products = require('./api');
 router.get('/products', products.getAllProducts);
 router.get('/products/:pid', products.getProductById);
-
 // #4 Complete the routing for POST, PUT, DELETE
-//Product APIs
-// index page
+router.port('/products', products.addProduct);
+router.put('/products/:pid', products.updateProductById);
+router.delete('/products/:pid', products.deleteProductById);
 
-app.get('/api', function (req, res) {
-    var version = { version: "1.0b" };
-    res.json(version);
-});
 
-//Product APIs
-app.post('/api/product', function (req, res) {
-    //Insert data to mongodb
-    var newproduct = req.body;
-    var product = new Product(newproduct);
-    product.save(function (err) {
-        if (err) res.status(500).json(err);
-        res.json({ status: "Added a product" });
-    });
-});
 
-app.get('/api/product', function (req, res) {     //showdetail
-    Product.find(function (err, product) {
-        if (err) res.status(500).json(err);
-        res.json(product);
-    });
-});
-
-app.get('/api/product/:id', function (req, res) {  //sert
-    var id = req.params.id;
-    Product.find({"_id":id}, function (err, product) {
-        if (err) res.status(500).json(err);
-        res.json(product);
-    });
-});
-
-app.put('/api/product/:id', function (req, res) {  //update
-    var id = req.params.id;
-    var updateproduct = req.body;
-    Product.findByIdAndUpdate(id, updateproduct, function(err){
-        if (err) res.status(500).json(err);
-        res.json({status: "Update a product"});
-    })
-});
-
-app.delete('/api/product/:id', function (req, res) {  //delete
-    var id = req.params.id;
-    var updateproduct = req.body;
-    Product.findByIdAndRemove(id, updateproduct, function(err){
-        if (err) res.status(500).json(err);
-        res.json({status: "Delete a product"});
-    })
-});
 // ===============================
 
 
