@@ -51,12 +51,9 @@ $(function () {
 
         // #13 Add new products by calling api
         // use $.post
-        $("input").keyup(function(){
-            var txt = $("input").val();
-            $.post(url,{suggest: txt}, function(result){
-                $("span").html(result);
-            })
-        })
+        $.post(url, newproduct, function(result){
+            $("span").html(result);
+          });
         // ===============================
 
     });
