@@ -36,6 +36,17 @@ router.get('/products/:pid', products.getProductById);
 
 // #4 Complete the routing for POST, PUT, DELETE
 //Product APIs
+// index page
+app.get('/', function (req, res) {
+    res.send('Express is running');
+});
+
+app.get('/api', function (req, res) {
+    var version = { version: "1.0b" };
+    res.json(version);
+});
+
+//Product APIs
 app.post('/api/product', function (req, res) {
     //Insert data to mongodb
     var newproduct = req.body;
@@ -70,7 +81,7 @@ app.put('/api/product/:id', function (req, res) {  //update
     })
 });
 
-app.delete('/api/product/:id', function (req, res) {  //update
+app.delete('/api/product/:id', function (req, res) {  //delete
     var id = req.params.id;
     var updateproduct = req.body;
     Product.findByIdAndRemove(id, updateproduct, function(err){
