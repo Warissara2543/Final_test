@@ -57,10 +57,15 @@ $(function () {
         // #15 Get a selected product and go back to product list
         // use $.get and winidow.location.href
         $.ajax({
-            url: 'product.html',
+            url: url,
             type: 'DELETE',
-            success: function(result) {
-                // Do something with the result
+            data: deleteproduct,
+            success: function (result) {
+                //Show updated status
+                $("#modalbody").text("Delete product " + pid);
+                $('#alertModal').modal('toggle');
+                // Refresh data
+                getData();
             }
         });
         // ===============================
