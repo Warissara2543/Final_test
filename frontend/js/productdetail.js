@@ -56,17 +56,26 @@ $(function () {
     $("#confirmdelete").click(function () {
         // #15 Get a selected product and go back to product list
         // use $.get and winidow.location.href
-        $.ajax({
-            url: url,
-            type: 'DELETE',
-            data: deleteproduct,
-            success: function (result) {
-                //Show updated status
-                $("#modalbody").text("Delete product " + pid);
-                $('#alertModal').modal('toggle');
-                // Refresh data
-                getData();
+        $("#saveproduct").click(function () {
+            var deleteproduct = {
+                serialno: $("#serialno").val(),
+                name: $("#name").val(),
+                category: $("#category").val(),
+                price: $("#price").val(),
+                photo: $("#photo").val()
             }
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                data: deleteproduct,
+                success: function (result) {
+                    //Show updated status
+                    $("#modalbody").text("Delete product " + pid);
+                    $('#alertModal').modal('toggle');
+                    // Refresh data
+                    getData();
+                }
+            });
         });
         // ===============================
     });
