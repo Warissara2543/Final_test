@@ -46,6 +46,6 @@ router.delete('/products/:pid', products.deleteProductById);
 app.use('/api', cors(), router);
 
 // #10 Start the server
-var port = process.env.PORT || 8080;
+app.listen(8080);
 // ===============================
 console.log('Magic happens on http://localhost:' + port);
