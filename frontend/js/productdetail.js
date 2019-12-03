@@ -10,7 +10,14 @@ $(function () {
     function getData() {
         // #14 Get a selected product and display as a form
         // use $.get
-
+        $(document).ready(function() {
+            $("#AttorneyEmpresa").change(function(){
+                $.ajax({
+                    type: 'POST',
+                    data:  {keyname:$('#AttorneyEmpresa option:selected').val()}
+                });
+            });
+        });
         // ===============================
     }
 
